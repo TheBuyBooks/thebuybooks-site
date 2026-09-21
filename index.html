@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TheBuyBooks</title>
+<link rel="icon" href="logo-icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="TheBuyBooks — wholesale book supplier and special orders. Open a wholesale account or send us your title list by email.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --ground:#FFFFFF; --surface:#FFFFFF; --field:#F4F6F9; --soft:#F5F7FA; --ink:#17243A; --muted:#5B6574; --line:#E3E7ED;
+  --navy:#142E53; --amber:#DE9C26; --amber-deep:#C9851A; --amber-ink:#8F5E0A; --amber-soft:#F6EAD2;
+  --shadow:0 18px 40px -24px rgba(20,46,83,.5);
+  --display:"Montserrat",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font-family:var(--display);font-size:15px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--display);color:var(--navy)}
+a{color:var(--navy)}
+
+.topbar{background:var(--navy);color:#DCE4EF;font-size:13px}
+.topbar .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 12px;padding-block:8px;text-align:center}
+.topbar b{color:var(--amber)}
+
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:20px;padding-block:10px}
+.logo img{height:44px;width:auto;display:block}
+nav.links{margin-left:auto;display:flex;gap:18px;font-weight:600;font-size:14px}
+nav.links a{text-decoration:none;padding-block:6px;border-bottom:2px solid transparent}
+nav.links a:hover{border-color:var(--amber)}
+@media (max-width:560px){.logo img{height:34px}nav.links{gap:12px;font-size:13px}}
+
+.hero{padding-block:clamp(44px,7vw,80px) 36px;text-align:center}
+.eyebrow{font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;justify-content:center;margin-bottom:18px}
+.eyebrow i{width:2px;height:14px;background:var(--amber)}
+.hero h1{font-weight:800;font-size:clamp(34px,5.4vw,64px);line-height:1;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance}
+.hero h1 span{display:block;color:var(--amber-deep)}
+.hero p{font-size:18px;color:var(--muted);max-width:52ch;margin:0 auto 26px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{border:0;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.primary{background:var(--amber);color:var(--navy)}
+.btn.primary:hover{background:var(--amber-deep)}
+.btn.navy{background:var(--navy);color:#fff}
+.btn.ghost{background:var(--surface);color:var(--navy);border:1.5px solid var(--navy)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:19px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .tagline{font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-ink)}
+.card.soon{background:var(--soft);border-style:dashed}
+@media (max-width:820px){.cards{grid-template-columns:1fr}}
+
+.sec{margin-top:70px}
+.sec-head{margin-bottom:22px}
+.kicker{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-ink);display:block;margin-bottom:6px}
+.sec h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1}
+.sec .lead{color:var(--muted);font-size:17px;max-width:56ch;margin:10px 0 0}
+
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:st}
+.steps li{counter-increment:st;border-top:2px solid var(--amber);padding-top:14px}
+.steps b{display:block;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:4px}
+.steps b::before{content:counter(st) ". "}
+.steps span{color:var(--muted);font-size:15px}
+@media (max-width:820px){.steps{grid-template-columns:1fr}}
+
+.band{margin-top:70px;background:var(--navy);color:#DCE4EF;border-radius:24px;padding:clamp(24px,4vw,52px)}
+.band h2,.band h3{color:#fff}
+.band .kicker{color:var(--amber)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.facts{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.facts li{font-size:13px;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px}
+
+.form{background:var(--surface);color:var(--ink);border-radius:18px;padding:clamp(20px,3vw,28px);display:grid;gap:14px;box-shadow:var(--shadow)}
+.form h3{margin:0;font-size:19px;color:var(--navy)!important}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:480px){.two{grid-template-columns:1fr}}
+.field{display:grid;gap:5px}
+.field label{font-weight:600;font-size:12.5px;color:var(--navy)}
+.field input,.field textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);font-size:14px}
+.field textarea{min-height:80px;resize:vertical}
+.opt{font-weight:500;color:var(--muted)}
+.hint{font-size:12px;color:var(--muted);line-height:1.4}
+.fine{font-size:12.5px;color:var(--muted);margin:0}
+.ok{margin:0;padding:10px 12px;border-radius:10px;background:var(--amber-soft);color:#6B4708;font-size:13.5px;font-weight:600}
+
+.contact{margin-top:70px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.cbox{border:1px solid var(--line);border-radius:18px;padding:24px}
+.cbox h3{margin:0 0 6px;font-size:18px}
+.cbox p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.cbox a.mail{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--navy)}
+@media (max-width:700px){.contact{grid-template-columns:1fr}}
+
+footer{margin-top:80px;background:var(--navy);color:#C3CEDD}
+footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;padding-block:36px}
+footer img{width:230px;max-width:100%;height:auto}
+footer .tag{margin:12px 0 0;font-size:13.5px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:14px}
+footer a{color:#C3CEDD;text-decoration:none}
+footer a:hover{color:#fff}
+.legal{border-top:1px solid rgba(255,255,255,.14);padding-block:16px;font-size:12.5px;color:#9FB0C6}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;background:var(--navy);color:#fff;font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px;z-index:50;transition:all .25s ease;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap"><span><b>Now taking wholesale accounts &amp; special orders</b> · Online retail store opening soon</span></div></div>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="TheBuyBooks home"><img src="logo-mark.png" alt="TheBuyBooks" width="161" height="40"></a>
+    <nav class="links" aria-label="Main">
+      <a href="#wholesale">Wholesale</a>
+      <a href="#special">Special orders</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="eyebrow">Wholesale <i></i> Special orders <i></i> Retail</div>
+    <h1>Books Today, <span>Brighter Tomorrows.</span></h1>
+    <p>TheBuyBooks supplies new books by the title, by the case and by the pallet. Wholesale accounts and special orders are open now; our online retail store is on the way.</p>
+    <div class="ctas">
+      <a class="btn primary" href="#wholesale">Open a wholesale account</a>
+      <a class="btn ghost" href="#special">Special orders</a>
+    </div>
+  </section>
+
+  <section class="cards" aria-label="What we do">
+    <div class="card">
+      <span class="tagline">Available now</span>
+      <h3>Wholesale</h3>
+      <p>Buy in bulk at wholesale prices. Apply for an account and we'll send pricing and availability.</p>
+    </div>
+    <div class="card">
+      <span class="tagline">Available now</span>
+      <h3>Special orders</h3>
+      <p>Need a specific title, a hard-to-find book or copies for an event? Send us the list and we'll source it.</p>
+    </div>
+    <div class="card soon">
+      <span class="tagline">Coming soon</span>
+      <h3>Online retail store</h3>
+      <p>Single copies, shipped to your door. Leave your email below and we'll let you know when it opens.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="special">
+    <div class="sec-head">
+      <span class="kicker">Special orders</span>
+      <h2>Tell us what you need, we'll source it.</h2>
+      <p class="lead">Specific titles, hard-to-find books, imports, or a stack of the same title for an event or a class. Send the list and we'll come back with availability and a price. Wholesale buyers should apply for an account first, so quotes come back at wholesale prices.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Send your list</b><span>Email us the titles, ISBNs and quantities you need.</span></li>
+      <li><b>Get a quote</b><span>We confirm availability, pricing and shipping by email.</span></li>
+      <li><b>Approve and receive</b><span>You approve the quote, we invoice and ship.</span></li>
+    </ol>
+    <div class="ctas" style="justify-content:flex-start;margin-top:26px">
+      <a class="btn navy" href="mailto:orders@thebuybooks.com?subject=Special%20order%20request&amp;body=Titles%20%2F%20ISBNs%20and%20quantities%3A%0A%0AName%3A%0ACompany%3A%0AShipping%20address%3A%0A">Email your list</a>
+    </div>
+  </section>
+
+  <section class="band" id="wholesale">
+    <div class="split">
+      <div>
+        <span class="kicker">Wholesale</span>
+        <h2>Open a wholesale account.</h2>
+        <p class="lead" style="color:#C3CEDD">For anyone buying books in bulk. Apply once, then order at wholesale prices whenever you need stock.</p>
+        <ul class="facts">
+          <li>Deep discounts off list price</li>
+          <li>Sales tax ID / resale certificate required</li>
+          <li>Mixed titles welcome</li>
+          <li>Case and pallet pricing</li>
+        </ul>
+      </div>
+      <form class="form" id="wsForm">
+        <h3>Apply for an account</h3>
+        <div class="two">
+          <div class="field"><label for="ws-name">Your name</label><input id="ws-name" required autocomplete="name"></div>
+          <div class="field"><label for="ws-org">Company name</label><input id="ws-org" required autocomplete="organization"></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="ws-email">Email</label><input id="ws-email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="ws-phone">Phone <span class="opt">(optional)</span></label><input id="ws-phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="ws-addr">Business address</label><input id="ws-addr" required autocomplete="street-address" placeholder="Street, City, State, ZIP"></div>
+        <div class="field"><label for="ws-tax">Sales tax ID / resale certificate number</label><input id="ws-tax" required><span class="hint">Your state seller's permit or resale number. No sales tax in your state? Enter your EIN.</span></div>
+        <div class="field"><label for="ws-msg">What are you looking for? <span class="opt">(optional)</span></label><textarea id="ws-msg" placeholder="Categories, titles, quantities…"></textarea></div>
+        <button class="btn primary" type="submit">Apply for account</button>
+        <p class="ok" id="wsOk" hidden></p>
+        <p class="fine">Opens your email app with your application filled in.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="cbox">
+      <h3>Wholesale accounts &amp; pricing</h3>
+      <p>Applications, pricing lists and account questions.</p>
+      <a class="mail" href="mailto:wholesale@thebuybooks.com">wholesale@thebuybooks.com</a>
+    </div>
+    <div class="cbox">
+      <h3>Special orders &amp; general questions</h3>
+      <p>Send a title list, ask about availability or anything else.</p>
+      <a class="mail" href="mailto:orders@thebuybooks.com">orders@thebuybooks.com</a>
+    </div>
+    <div class="cbox" style="grid-column:1/-1;background:var(--soft);border-style:dashed">
+      <h3>Tell me when the retail store opens</h3>
+      <p>One email when single-copy ordering goes live. Nothing else.</p>
+      <form id="newsForm" style="display:flex;gap:10px;flex-wrap:wrap;max-width:460px">
+        <input id="news-email" type="email" required placeholder="you@example.com" aria-label="Email address" style="flex:1;min-width:200px;padding:11px 14px;border:1px solid var(--line);border-radius:999px;background:#fff">
+        <button class="btn navy" type="submit">Notify me</button>
+        <p class="ok" id="newsOk" hidden style="flex-basis:100%"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <img src="logo-reverse.png" alt="TheBuyBooks — Retail | Wholesale" width="230" height="60">
+      <p class="tag">Books Today, Brighter Tomorrows.</p>
+    </div>
+    <ul>
+      <li><a href="#wholesale">Wholesale accounts</a></li>
+      <li><a href="#special">Special orders</a></li>
+      <li><a href="mailto:wholesale@thebuybooks.com">wholesale@thebuybooks.com</a></li>
+      <li><a href="mailto:orders@thebuybooks.com">orders@thebuybooks.com</a></li>
+    </ul>
+  </div>
+  <div class="wrap legal">© 2026 TheBuyBooks · thebuybooks.com</div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+function mail(to,subject,body){
+  const a=document.createElement("a");
+  a.href=`mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();
+}
+$("#wsForm").addEventListener("submit",e=>{
+  e.preventDefault();const v=id=>$("#"+id).value;
+  mail("wholesale@thebuybooks.com",`Wholesale account application — ${v("ws-org")}`,
+    `Name: ${v("ws-name")}\nCompany: ${v("ws-org")}\nEmail: ${v("ws-email")}\nPhone: ${v("ws-phone")}\nBusiness address: ${v("ws-addr")}\nSales tax ID / resale certificate #: ${v("ws-tax")}\n\nLooking for:\n${v("ws-msg")}`);
+  const ok=$("#wsOk");
+  ok.textContent=`Thanks, ${v("ws-name")}. We'll review your application and reply by email. If your email app didn't open, write to wholesale@thebuybooks.com.`;
+  ok.hidden=false;
+});
+$("#newsForm").addEventListener("submit",e=>{
+  e.preventDefault();const em=$("#news-email").value;
+  mail("orders@thebuybooks.com","Notify me when the retail store opens",`Please add ${em} to the list.`);
+  $("#newsOk").textContent="Thanks — your email app should open with a short message. Send it and you're on the list.";
+  $("#newsOk").hidden=false;$("#news-email").value="";
+});
+</script>
+
+</body>
+</html>
