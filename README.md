@@ -1,11 +1,10 @@
 # TheBuyBooks — website (launch version)
 
-Static site: wholesale account applications + ordering by email.
-Online retail store comes later (Shopify).
+Static site: wholesale account applications + special orders by email.
 
 ## Files
 - `index.html` — the whole site
-- `logo-mark.png`, `logo-reverse.png`, `logo-icon.png`, `apple-touch-icon.png` — logos
+- `logo-mark.png` (header), `logo-full.png` (footer), `logo-icon.png`, `apple-touch-icon.png` — logos
 - `CNAME` — custom domain for GitHub Pages (thebuybooks.com)
 
 ## Publish on GitHub Pages
@@ -34,4 +33,4 @@ Change the text in `index.html` and commit; GitHub Pages redeploys in about a mi
 
 ## Email addresses used on the site
 - wholesale@thebuybooks.com — account applications
-- orders@thebuybooks.com — order lists, general questions, retail waiting list
+- orders@thebuybooks.com — special-order lists, general questions
